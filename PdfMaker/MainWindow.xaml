@@ -1,0 +1,42 @@
+﻿<Window x:Class="PdfMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PdfMaker"
+        mc:Ignorable="d"
+        
+        Title="TE2 Pdf Tool" Height="450" Width="1100">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="c1" Width="800"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <TextBlock Margin="5"><Run FontWeight="Bold" Text="Step 1: Prepare chrome web:"/></TextBlock>
+            <TextBox x:Name="script"/>
+            <TextBlock Margin="5"><Run FontWeight="Bold" Text="Step 2: Drag and Drop Images Source:"/></TextBlock>
+            <ListBox x:Name="imagespath" MinHeight="100" AllowDrop="True" PreviewDrop="imagespath_PreviewDrop"/>
+            <Button Margin="10" Click="Button_Click">Load Images</Button>
+            <TextBlock Margin="5"><Run FontWeight="Bold" Text="Step 3: Define the Break Points:"/></TextBlock>
+            <ListBox x:Name="breakPointsLb" MinHeight="100">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="120" Text="{Binding Margin.Top}" FontSize="16"/>
+                            <Button Margin="10,0,0,0" Click="Buttondelete_Click">Delete</Button>
+                            <Button Margin="10,0,0,0" Click="ButtonHighlight_Click">Highlight</Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Margin="10" Click="GenPdf">Generate Pdf</Button>
+        </StackPanel>
+        <ScrollViewer Grid.Column="0">
+            <Grid x:Name="grid" PreviewMouseDown="grid_PreviewMouseDown">
+                <Image x:Name="preview" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Window>

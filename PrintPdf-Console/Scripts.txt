@@ -1,0 +1,10 @@
+﻿//Bước 1:
+// Open chrome - F12 ở view chế độ bên dưới màn hình. chạy script này
+// sau đó chụp ảnh bằng extension: GoFullPage
+$('header').hide()
+$('#Crumb').hide()
+$('body').css('background', 'white')
+$('.container').css('width', '100%')
+$('.container').css('padding', '0px')
+$('.capabilities-table').css('width', '100%')
+$('.profile_content').css('padding', '2px')
